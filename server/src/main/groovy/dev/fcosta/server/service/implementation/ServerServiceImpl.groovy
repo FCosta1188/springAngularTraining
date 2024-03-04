@@ -7,6 +7,7 @@ import dev.fcosta.server.service.ServerService
 import groovy.util.logging.Slf4j
 import jakarta.transaction.Transactional
 import lombok.RequiredArgsConstructor
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
@@ -16,7 +17,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 @RequiredArgsConstructor //constructor which handles dependency injection with serverRepo and @Autowired
 @Slf4j //log
 class ServerServiceImpl implements ServerService {
+
+    @Autowired
     final ServerRepo serverRepo
+
+    ServerServiceImpl(ServerRepo serverRepo) {
+        this.serverRepo = serverRepo
+    }
 
     @Override
     Server create(Server server) {

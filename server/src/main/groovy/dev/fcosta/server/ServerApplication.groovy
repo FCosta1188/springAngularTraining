@@ -26,7 +26,7 @@ class ServerApplication {
         return {
             serverRepo.save(new Server(
                     null,
-                    "192.168.1.160",
+                    "192.168.1.161",
                     "Ubuntu Linux",
                     "16 GB",
                     "Personal PC",
@@ -37,21 +37,21 @@ class ServerApplication {
 
             serverRepo.save(new Server(
                     null,
-                    "192.168.1.160",
-                    "Ubuntu Linux",
-                    "16 GB",
-                    "Personal PC",
+                    "192.168.1.162",
+                    "Windows Server",
+                    "32 GB",
+                    "Desktop PC",
                     "http://localhost:8080/server/image/server2.png",
-                    Status.SERVER_UP
+                    Status.SERVER_DOWN
             )
             )
 
             serverRepo.save(new Server(
                     null,
-                    "192.168.1.160",
-                    "Ubuntu Linux",
-                    "16 GB",
-                    "Personal PC",
+                    "192.168.1.163",
+                    "MacOS",
+                    "64 GB",
+                    "laptop",
                     "http://localhost:8080/server/image/server3.png",
                     Status.SERVER_UP
             )
@@ -59,12 +59,12 @@ class ServerApplication {
 
             serverRepo.save(new Server(
                     null,
-                    "192.168.1.160",
-                    "Ubuntu Linux",
-                    "16 GB",
-                    "Personal PC",
+                    "192.168.1.164",
+                    "Unix",
+                    "128 GB",
+                    "mainframe",
                     "http://localhost:8080/server/image/server4.png",
-                    Status.SERVER_UP
+                    Status.SERVER_DOWN
             )
             )
         }

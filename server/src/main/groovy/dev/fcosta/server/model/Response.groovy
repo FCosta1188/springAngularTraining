@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus
 import java.time.LocalDateTime
 
 @Canonical
-@Builder
+@SuperBuilder
 @JsonInclude(JsonInclude.Include.NON_NULL) // don't include null values in Response json
 class Response {
     protected LocalDateTime timestamp
