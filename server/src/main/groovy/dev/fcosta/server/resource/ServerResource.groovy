@@ -43,7 +43,7 @@ class ServerResource {
         ))
     }
 
-    /*@GetMapping("/ping/{ipAddress}")
+    @GetMapping("/ping/{ipAddress}")
     ResponseEntity<Response> pingServer(@PathVariable("ipAddress") String ipAddress) {
         Server server = serverService.ping(ipAddress)
 
@@ -92,5 +92,5 @@ class ServerResource {
     @GetMapping(path = "/image/{fileName}", produces = MediaType.IMAGE_JPEG_VALUE)
     byte[] getServerImage(@PathVariable("fileName") String fileName) {
         return Files.readAllBytes(Paths.get(System.getProperty("user.home") + "Downloads/images/" + fileName))
-    }*/
+    }
 }

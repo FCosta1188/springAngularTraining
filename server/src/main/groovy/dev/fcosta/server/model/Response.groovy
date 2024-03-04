@@ -1,22 +1,22 @@
 package dev.fcosta.server.model
 
 import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import groovy.transform.Canonical
-import groovy.transform.builder.Builder
-import lombok.experimental.SuperBuilder
 import org.springframework.http.HttpStatus
 
 import java.time.LocalDateTime
 
 @Canonical
-@SuperBuilder
+//@SuperBuilder //using groovy constructor instead
+//@JsonSerialize
 @JsonInclude(JsonInclude.Include.NON_NULL) // don't include null values in Response json
 class Response {
-    protected LocalDateTime timestamp
-    protected int statusCode
-    protected HttpStatus status
-    protected String reason
-    protected String message
-    protected String developerMessage
-    protected Map<?, ?> data
+     LocalDateTime timestamp
+     int statusCode
+     HttpStatus status
+     String reason
+     String message
+     String developerMessage
+     Map<?, ?> data
 }

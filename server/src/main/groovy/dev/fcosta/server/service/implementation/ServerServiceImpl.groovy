@@ -5,15 +5,15 @@ import dev.fcosta.server.model.Server
 import dev.fcosta.server.repo.ServerRepo
 import dev.fcosta.server.service.ServerService
 import groovy.util.logging.Slf4j
-import jakarta.transaction.Transactional
 import lombok.RequiredArgsConstructor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
 @Service
-@Transactional //any database operations performed within the marked method or class will be executed within a transaction. If the transaction is successful, the changes will be committed to the database.
+@Transactional(readOnly = false) //any database operations performed within the marked method or class will be executed within a transaction. If the transaction is successful, the changes will be committed to the database.
 @RequiredArgsConstructor //constructor which handles dependency injection with serverRepo and @Autowired
 @Slf4j //log
 class ServerServiceImpl implements ServerService {

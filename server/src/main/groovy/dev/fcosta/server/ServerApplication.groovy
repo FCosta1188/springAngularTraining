@@ -1,12 +1,16 @@
 package dev.fcosta.server
 
 import dev.fcosta.server.enumeration.Status
+import dev.fcosta.server.model.Response
 import dev.fcosta.server.model.Server
 import dev.fcosta.server.repo.ServerRepo
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
+import org.springframework.http.HttpStatus
+
+import java.time.LocalDateTime
 
 //***** https://www.youtube.com/watch?v=8ZPsZBcue50 *****
 /**
@@ -19,52 +23,62 @@ class ServerApplication {
 
     static void main(String[] args) {
         SpringApplication.run(ServerApplication, args)
+
+        Response r = new Response(
+                timestamp: LocalDateTime.now(),
+                data: Map.of("servers", "test"),
+                message: "Servers retrieved",
+                status: HttpStatus.OK,
+                statusCode: HttpStatus.OK.value()
+        )
+
+
     }
 
     @Bean
     CommandLineRunner init(ServerRepo serverRepo) {
         return {
             serverRepo.save(new Server(
-                    null,
-                    "192.168.1.161",
-                    "Ubuntu Linux",
-                    "16 GB",
-                    "Personal PC",
-                    "http://localhost:8080/server/image/server1.png",
-                    Status.SERVER_UP
+                    id: null,
+                    ipAddress: "192.168.1.161",
+                    name: "Ubuntu Linux",
+                    memory: "16 GB",
+                    type: "Personal PC",
+                    imageUrl: "http://localhost:8080/server/image/server1.png",
+                    status: Status.SERVER_UP
             )
             )
 
             serverRepo.save(new Server(
-                    null,
-                    "192.168.1.162",
-                    "Windows Server",
-                    "32 GB",
-                    "Desktop PC",
-                    "http://localhost:8080/server/image/server2.png",
-                    Status.SERVER_DOWN
+                    id: null,
+                    ipAddress: "192.168.1.162",
+                    name: "Windows Server",
+                    memory: "32 GB",
+                    type: "Desktop PC",
+                    imageUrl: "http://localhost:8080/server/image/server2.png",
+                    status: Status.SERVER_DOWN
             )
             )
 
             serverRepo.save(new Server(
-                    null,
-                    "192.168.1.163",
-                    "MacOS",
-                    "64 GB",
-                    "laptop",
-                    "http://localhost:8080/server/image/server3.png",
-                    Status.SERVER_UP
+                    id: null,
+                    ipAddress: "192.168.1.163",
+                    name: "MacOS",
+                    memory: "64 GB",
+                    type: "laptop",
+                    imageUrl: "http://localhost:8080/server/image/server3.png",
+                    status: Status.SERVER_UP
             )
             )
 
             serverRepo.save(new Server(
-                    null,
-                    "192.168.1.164",
-                    "Unix",
-                    "128 GB",
-                    "mainframe",
-                    "http://localhost:8080/server/image/server4.png",
-                    Status.SERVER_DOWN
+                    id: null,
+                    ipAddress: "192.168.1.164",
+                    name: "Unix",
+                    memory: "128 GB",
+                    type: "mainframe",
+                    imageUrl: "http://localhost:8080/server/image/server4.png",
+                    status: Status.SERVER_DOWN
             )
             )
         }
