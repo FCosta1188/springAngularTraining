@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="nets_thirdparty" />
+      <option name="name" value="nets thirdparty" />
+      <option name="url" value="https://nexus.bbsas.no:9006/repository/nets_thirdparty/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="uni_snapshots" />
+      <option name="name" value="Repository for snapshot versions of jars" />
+      <option name="url" value="https://nexus.bbsas.no:9006/repository/uni_snapshots/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="MavenRepo" />
+      <option name="name" value="MavenRepo" />
+      <option name="url" value="https://repo.maven.apache.org/maven2/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://nexus.bbsas.no:9006/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="uni_releases" />
+      <option name="name" value="Repository for release versions of jars" />
+      <option name="url" value="https://nexus.bbsas.no:9006/repository/uni_releases/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="thirdparty" />
+      <option name="name" value="thirdparty" />
+      <option name="url" value="https://nexus.bbsas.no:9006/repository/thirdparty/" />
+    </remote-repository>
+  </component>
+</project>
