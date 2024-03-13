@@ -43,7 +43,18 @@ class ServerResource {
         ))
     }
 
-    @GetMapping("/ping/{ipAddress}")
+    @GetMapping("/get/{id}")
+    ResponseEntity<Response> getServer(@PathVariable("id") Long id) {
+        return ResponseEntity<Response>.ok(new Response(
+                timestamp: LocalDateTime.now(),
+                data: Map.of("server", serverService.get(id)),
+                message: "Server retrieved",
+                status: HttpStatus.OK,
+                statusCode: HttpStatus.OK.value()
+        ))
+    }
+
+    @GetMapping("/ping/{ipAddress}") // does not work while connected to VPN
     ResponseEntity<Response> pingServer(@PathVariable("ipAddress") String ipAddress) {
         Server server = serverService.ping(ipAddress)
 
@@ -54,6 +65,11 @@ class ServerResource {
                 status: HttpStatus.OK,
                 statusCode: HttpStatus.OK.value()
         ))
+    }
+
+    @GetMapping(path = "/image/{fileName}", produces = MediaType.IMAGE_JPEG_VALUE)
+    byte[] getServerImage(@PathVariable("fileName") String fileName) {
+        return Files.readAllBytes(Paths.get(System.getProperty("user.home") + "/Downloads/springAngularTrainingImages/" + fileName))
     }
 
     @PostMapping("/save")
@@ -67,17 +83,6 @@ class ServerResource {
         ))
     }
 
-    @GetMapping("/get/{id}")
-    ResponseEntity<Response> getServer(@PathVariable("id") Long id) {
-        return ResponseEntity<Response>.ok(new Response(
-                timestamp: LocalDateTime.now(),
-                data: Map.of("server", serverService.get(id)),
-                message: "Server retrieved",
-                status: HttpStatus.OK,
-                statusCode: HttpStatus.OK.value()
-        ))
-    }
-
     @DeleteMapping("/delete/{id}")
     ResponseEntity<Response> deleteServer(@PathVariable("id") Long id) {
         return ResponseEntity<Response>.ok(new Response(
@@ -87,10 +92,5 @@ class ServerResource {
                 status: HttpStatus.OK,
                 statusCode: HttpStatus.OK.value()
         ))
-    }
-
-    @GetMapping(path = "/image/{fileName}", produces = MediaType.IMAGE_JPEG_VALUE)
-    byte[] getServerImage(@PathVariable("fileName") String fileName) {
-        return Files.readAllBytes(Paths.get(System.getProperty("user.home") + "Downloads/images/" + fileName))
     }
 }

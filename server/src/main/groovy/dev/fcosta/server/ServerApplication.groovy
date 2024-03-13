@@ -31,8 +31,6 @@ class ServerApplication {
                 status: HttpStatus.OK,
                 statusCode: HttpStatus.OK.value()
         )
-
-
     }
 
     @Bean
@@ -40,7 +38,7 @@ class ServerApplication {
         return {
             serverRepo.save(new Server(
                     id: null,
-                    ipAddress: "192.168.1.161",
+                    ipAddress: "8.8.8.8",
                     name: "Ubuntu Linux",
                     memory: "16 GB",
                     type: "Personal PC",
@@ -51,7 +49,7 @@ class ServerApplication {
 
             serverRepo.save(new Server(
                     id: null,
-                    ipAddress: "192.168.1.162",
+                    ipAddress: "172.21.80.1",
                     name: "Windows Server",
                     memory: "32 GB",
                     type: "Desktop PC",
@@ -62,7 +60,7 @@ class ServerApplication {
 
             serverRepo.save(new Server(
                     id: null,
-                    ipAddress: "192.168.1.163",
+                    ipAddress: "208.67.222.222",
                     name: "MacOS",
                     memory: "64 GB",
                     type: "laptop",
@@ -73,7 +71,7 @@ class ServerApplication {
 
             serverRepo.save(new Server(
                     id: null,
-                    ipAddress: "192.168.1.164",
+                    ipAddress: "172.25.192.1",
                     name: "Unix",
                     memory: "128 GB",
                     type: "mainframe",
