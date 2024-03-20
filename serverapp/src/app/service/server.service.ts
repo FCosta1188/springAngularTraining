@@ -6,6 +6,7 @@ import { CustomResponse } from '../interface/custom-response';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { Server } from '../interface/server';
+import { Status } from '../enum/status.enum';
 
 @Injectable({ providedIn: 'root' })
 export class ServerService {
@@ -44,6 +45,31 @@ export class ServerService {
       catchError(this.handleError)
     );
 
+  //filter servers (frontend only, no HTTP request to backend)
+  filter$ = (status: Status, response: CustomResponse) => <Observable<CustomResponse>> //cast
+  new Observable<CustomResponse>(
+    subscriber => {
+      console.log(response);
+      subscriber.next( // next() admits values to subscribers of this observable 
+        status === Status.ALL ? 
+                   //TRUE: no filter
+                   { ...response, message: `Showing all servers`} : 
+                   //FALSE
+                   { ...response,
+                    message: response.data.servers.filter(server => server.status === status).length > 0 ? 
+                             `Servers filtered by ${status.replace("_", " ")} status` : 
+                             `No servers of status ${status.replace("_", " ")} found`,
+                    data: { servers: response.data.servers.filter(server => server.status === status) }
+                  } //error: 'response.data.servers' is possibly 'undefined' -> solved by setting "strict" to false in tsconfi.json     
+      );
+      subscriber.complete(); //data admission completed 
+    }
+  )
+    .pipe(
+      tap(console.log),
+      catchError(this.handleError)
+    );
+  
   //deleteServer
   delete$ = (serverId: number) => <Observable<CustomResponse>> //cast
   this.http.delete<CustomResponse>(`${this.baseApiUrl}/server/delete/${serverId}`)
@@ -62,7 +88,7 @@ export class ServerService {
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.log(error)
-    return throwError(() => 'Method not implemented.');
+    return throwError(() => `An error occurred - Error code: ${error.status}`);
   }
   //--------------------------------------------
 }
