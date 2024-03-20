@@ -1,5 +1,5 @@
 export enum DataState { // without the string values, TS is gonna assign indexes to each item, and show them as values when calling the enum
-    LOADING = 'LOADING', //0
-    LOADED = 'LOADED', //1
-    ERROR = 'ERROR' //2
+    LOADING_STATE = 'LOADING_STATE', //0
+    LOADED_STATE = 'LOADED_STATE', //1
+    ERROR_STATE = 'ERROR_STATE' //2
 }
