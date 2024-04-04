@@ -4,7 +4,11 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strict": false, //set to false to solve the error 'response.data.servers' is possibly 'undefined' in server.service.ts
+
+    //https://www.typescriptlang.org/tsconfig#strict
+    "strict": false, //set to false to solve the error: 'response.data.servers' is possibly 'undefined' in server.service.ts.
+                     //normally it's not a good practice to turn strict off, it is better to turn on/off the individual strict mode family options.
+    
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
